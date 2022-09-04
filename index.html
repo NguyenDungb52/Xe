@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div id="game"></div>
+    <script>
+      class Hero {
+        top;
+        left;
+        constructor(top, left) {
+          this.top = top;
+          this.left = left;
+        }
+
+        displayHero() {
+          return `<div style="background-color: red;width: 100px; height: 100px; margin-top: ${this.top}px ; margin-left: ${this.left}px;"></div>`;
+        }
+        moveDown() {
+          this.top += 20;
+        }
+        moveUp() {
+          this.top -= 20;
+        }
+        moveRight() {
+          this.left += 20;
+        }
+        moveLeft() {
+          this.left -= 20;
+        }
+      }
+      let Hero1 = new Hero(10, 10);
+      document.getElementById("game").innerHTML = Hero1.displayHero();
+
+      function moveSelection() {
+        window.addEventListener("keydown", function (event) {
+          switch (event.keyCode) {
+            case 40:
+              Hero1.moveDown();
+              document.getElementById("game").innerHTML = Hero1.displayHero();
+              break;
+            case 38:
+              Hero1.moveUp();
+              document.getElementById("game").innerHTML = Hero1.displayHero();
+              break;
+            case 39:
+              Hero1.moveRight();
+              document.getElementById("game").innerHTML = Hero1.displayHero();
+              break;
+            case 37:
+              Hero1.moveLeft();
+              document.getElementById("game").innerHTML = Hero1.displayHero();
+              break;
+          }
+        });
+      }
+      moveSelection();
+    </script>
+  </body>
+</html>
